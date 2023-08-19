@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="css/01-task.css" />
   </head>
   <body>
-    <select class="breed-select"></select>
+    <form action="submit" class="form-select" id="formSelect">
+      <label for="breed-select" class="label"
+        >Please, select the breed of a cat</label
+      >
+      <select
+        class="breed-select"
+        id="breed-select"
+        name="breed-select"
+      ></select>
+    </form>
     <p class="loader">Loading data, please wait...</p>
     <p class="error">Oops! Something went wrong! Try reloading the page!</p>
     <div class="cat-info"></div>
