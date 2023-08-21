@@ -1,27 +1,42 @@
 import Notiflix from 'notiflix';
-// import SlimSelect from 'slim-select'
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
+import { fetchBreeds, fetchCatByBreed } from './cat-api';
 
 // new SlimSelect({
 //   select: '#selectElement'
 // })
-import axios from "axios";
-
-axios.defaults.headers.common["x-api-key"] = "live_t1mW2wa0XY9KIPTcSL1wssfIiXpZYy71WPMPSiXAQZC4ztX2kccyRmhGDUPsGF9C";
 
 const refs = {
-    formSelect: document.getElementById("formSelect"),
-    // list: document.getElementById("list"),
+    breedSelect: document.getElementById(`.breed-select`),
+    catInfo: document.querySelector(`.cat-info`),
+    loader: document.querySelector(`.loader`),
+    error: document.querySelector(`.error`),
 };
 
-refs.formSelect.addEventListener("submit", catSelect);
+showLoader();
+hideError();
+hideSelect();
+
+fetchBreeds().then((breeds) => {
+    breedSelectId(breeds);
+});
+
+refs.breedSelect.addEventListener("submit", catSelect);
 
 function catSelect(e) {
     e.preventDefault();
 
     const breeds = refs.formSelect.elements.breeds;
-    console.log(breeds.value);
+    // const { breeds } = e.currentTarget.elements;
+    // console.log(breeds.value);
+    // console.dir(refs.formSelect.breeds);
 
-    selectCat()
+    selectCat(breeds.value)
+        .then(data => {
+        console.log(data);
+        })
+    .catch((err) => console.error(err));
 }
 
 //  в <select> додати <option> = n
@@ -48,7 +63,7 @@ function selectCat(breeds) {
         return res.json();
     });
 } 
-    selectCat()
-    .then((data) => console.log(data))
-    .catch((err) => console.error(err));
+    // selectCat()
+    // .then((data) => console.log(data))
+    // .catch((err) => console.error(err));
     
