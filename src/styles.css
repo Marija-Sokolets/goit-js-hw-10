@@ -3,18 +3,42 @@ body {
   line-height: 1.5;
 }
 
-label {
-  display: block;
-  margin-bottom: 4px;
-}
-
 select {
   font-size: 16px;
 }
-
+    
 .breed-select {
-  width: 180px;
-  height: 32px;
+  width: 250px;
+}
+
+.cat-info {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 50px;
+  background-color: rgb(189, 228, 240);
+}
+
+.cat-details {
+  flex-grow: 1;
+}
+
+.cat-info img {
+  max-width: 50%;
+  height: auto;
+}
+
+.characteristics-cat {
+  margin-right: 15px;
+}
+
+.temp {
+  font-weight: 40px;
+  font-size: larger;
+}
+
+.hidden {
+  display: none;
 }
 
 .loader {
@@ -22,10 +46,12 @@ select {
   height: 48px;
   display: inline-block;
   position: relative;
+  font-weight: 700;
 }
+
 .loader::after,
 .loader::before {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   width: 48px;
   height: 48px;
@@ -35,6 +61,7 @@ select {
   top: 0;
   animation: animloader 2s ease-in-out infinite;
 }
+
 .loader::after {
   border-color: #f705ea;
   animation-delay: 1s;
@@ -45,9 +72,9 @@ select {
     transform: scale(0);
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
     opacity: 0;
   }
 }
-    
